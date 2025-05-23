@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Heema Hotels & Suites - Luxury Accommodation in Ilorin</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B5A2B;
+            --secondary-color: #D4AF37;
+            --dark-color: #1A1A1A;
+            --light-color: #F8F9FA;
+            --accent-color: #A67C52;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        
+        .hero-section {
+            /*background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');*/
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/sheema.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            z-index: 2;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-light:hover {
+            color: var(--dark-color);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        .room-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .amenities-section {
+            background-color: var(--light-color);
+        }
+        
+        .amenity-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .booking-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-form .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+        }           
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(139, 90, 43, 0.25);
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-item img {
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 80vh;
+                text-align: center;
+            }
+            
+            .hero-buttons .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h2 class="m-0" style="color: var(--primary-color);">S-Heema <span style="color: var(--secondary-color);">Hotels & Suites</span></h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rooms">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#amenities">Amenities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#booking" class="btn btn-primary ms-lg-3">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h6 class="text-uppercase text-warning mb-3">Luxury Accommodation</h6>
+                <h1 class="display-3 fw-bold mb-4">Experience Unparalleled Comfort</h1>
+                <p class="lead mb-5">Discover the perfect blend of luxury and convenience at S Heema Hotels & Suites, located in the heart of Ilorin.</p>
+                <div class="hero-buttons d-flex flex-wrap gap-3">
+                    <a href="#booking" class="btn btn-primary">Book Your Stay</a>
+                    <a href="#rooms" class="btn btn-outline-light">Explore Rooms</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h6 class="text-uppercase text-primary mb-3">About Us</h6>
+                    <h2 class="mb-4">Welcome to S-Heema Hotels & Suites</h2>
+                    <p class="mb-4">Nestled in the vibrant city of Ilorin, S Heema Hotels & Suites offers a sanctuary of comfort and luxury. Our meticulously designed rooms and suites provide the perfect retreat for both business and leisure travelers.</p>
+                    <p>With our prime location at 10 Ayodele Street behind Rhema Chapel Church Tanke Tipper Garage, we offer easy access to the city's major attractions while maintaining a peaceful atmosphere for our guests.</p>
+                    <div class="row mt-5">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-concierge-bell text-primary me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h5 class="mb-0">24/7 Service</h5>
+                                    <p class="mb-0 text-muted">Always at your service</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-wifi text-primary me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h5 class="mb-0">Free WiFi</h5>
+                                    <p class="mb-0 text-muted">High-speed internet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Hotel Lobby" class="img-fluid rounded shadow">
+                        </div>
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1566669437685-5f63c8f2a59d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="Hotel Restaurant" class="img-fluid rounded shadow mb-4">
+                            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Hotel Pool" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center">
+                <h6 class="text-uppercase text-primary mb-3">Accommodation</h6>
+                <h2 class="section-title">Our Rooms & Suites</h2>
+                <p class="lead mx-auto" style="max-width: 700px;">Choose from our variety of luxurious rooms and suites designed to provide maximum comfort for all our guests.</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-card">
+                        <img src="./assets/rooms.jpg" class="card-img-top" alt="Deluxe Room">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-4">
+                                <h5 class="card-title mb-0">Deluxe Room</h5>
+                                <span class="text-primary fw-bold">₦25,000/night</span>
+                            </div>
+                            <p class="card-text text-muted p-4">Spacious room with a comfortable king-size bed, work desk, and modern amenities.</p>
+                            <ul class="list-unstyled mb-4 p-4">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 32" Flat-screen TV</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Air conditioning</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Free WiFi</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Coffee maker</li>
+                            </ul>
+                            <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-card">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Executive Suite">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-4">
+                                <h5 class="card-title mb-0">Executive Suite</h5>
+                                <span class="text-primary fw-bold">₦45,000/night</span>
+                            </div>
+                            <p class="card-text text-muted p-4">Luxurious suite with separate living area, premium furnishings, and enhanced amenities.</p>
+                            <ul class="list-unstyled mb-4 p-4">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 42" Flat-screen TV</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Mini refrigerator</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Premium toiletries</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Complimentary breakfast</li>
+                            </ul>
+                            <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-card">
+                        <img src="./assets/yosuke-ota-0R1GMsc2E7w-unsplash.jpg" class="card-img-top" alt="Presidential Suite">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-4">
+                                <h5 class="card-title mb-0">Presidential Suite</h5>
+                                <span class="text-primary fw-bold">₦75,000/night</span>
+                            </div>
+                            <p class="card-text text-muted p-4">Our most luxurious accommodation featuring a spacious bedroom, living room, and premium services.</p>
+                            <ul class="list-unstyled mb-4 p-4">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> 55" Flat-screen TV</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Jacuzzi bath</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Butler service</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Private balcony</li>
+                            </ul>
+                            <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">View All Rooms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities-section py-5">
+        <div class="container py-5">
+            <div class="text-center">
+                <h6 class="text-uppercase text-primary mb-3">Facilities</h6>
+                <h2 class="section-title">Hotel Amenities</h2>
+                <p class="lead mx-auto" style="max-width: 700px;">We provide world-class facilities to ensure your stay is comfortable and memorable.</p>
+            </div>
+            
+            <div class="row mt-5 text-center">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="amenity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>Restaurant & Bar</h5>
+                    <p class="text-muted">Enjoy exquisite local and international cuisine at our in-house restaurant.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="amenity-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h5>Swimming Pool</h5>
+                    <p class="text-muted">Relax by our outdoor swimming pool with a refreshing cocktail.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="amenity-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h5>Spa & Wellness</h5>
+                    <p class="text-muted">Rejuvenate with our range of spa treatments and massage therapies.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="amenity-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h5>Fitness Center</h5>
+                    <p class="text-muted">Stay fit with our state-of-the-art gym equipment.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                    <div class="amenity-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h5>Free WiFi</h5>
+                    <p class="text-muted">High-speed internet access throughout the hotel.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                    <div class="amenity-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h5>Free Parking</h5>
+                    <p class="text-muted">Secure parking space available for all guests.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <div class="amenity-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h5>24-Hour Reception</h5>
+                    <p class="text-muted">Our staff is always available to assist you.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="amenity-icon">
+                        <i class="fas fa-business-time"></i>
+                    </div>
+                    <h5>Business Center</h5>
+                    <p class="text-muted">Fully equipped meeting rooms and business facilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-5 bg-dark text-white">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h6 class="text-uppercase text-warning mb-3">Reservation</h6>
+                    <h2 class="mb-4">Book Your Stay</h2>
+                    <p class="mb-4">Ready to experience luxury accommodation in Ilorin? Fill out the booking form and our team will contact you to confirm your reservation.</p>
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="fas fa-phone-alt text-warning me-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5 class="mb-0">Have Questions?</h5>
+                            <p class="mb-0">Call us: +234 916 322 7435</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-envelope text-warning me-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5 class="mb-0">Email Us</h5>
+                            <p class="mb-0">sheemahotels@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="booking-form">
+                        <h4 class="mb-4 text-center" style="color: var(--primary-color);">Make a Reservation</h4>
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="checkIn" class="form-label">Check In</label>
+                                    <input type="date" class="form-control" id="checkIn" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="checkOut" class="form-label">Check Out</label>
+                                    <input type="date" class="form-control" id="checkOut" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="adults" class="form-label">Adults</label>
+                                    <select class="form-select" id="adults">
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="children" class="form-label">Children</label>
+                                    <select class="form-select" id="children">
+                                        <option value="0" selected>0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="roomType" class="form-label">Room Type</label>
+                                <select class="form-select" id="roomType">
+                                    <option value="deluxe">Deluxe Room</option>
+                                    <option value="executive">Executive Suite</option>
+                                    <option value="presidential">Presidential Suite</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="fullname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Check Availability</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center">
+                <h6 class="text-uppercase text-primary mb-3">Testimonials</h6>
+                <h2 class="section-title">What Our Guests Say</h2>
+                <p class="lead mx-auto" style="max-width: 700px;">Hear from our satisfied guests about their experiences at S Heema Hotels & Suites.</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Guest" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-1">Amina Yusuf</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-0">"The service at S Heema Hotels was exceptional. The room was spacious and clean, with all the amenities I needed. The location is perfect for both business and leisure travelers. I'll definitely be back!"</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Guest" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-1">Tunde Adeleke</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-0">"I stayed at S Heema Hotels during a business trip and was thoroughly impressed. The staff went above and beyond to make my stay comfortable. The executive suite had everything I needed to work and relax."</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Guest" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-1">Chioma Okonkwo</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-0">"The presidential suite was worth every penny! The attention to detail was remarkable, from the luxurious bedding to the premium toiletries. The hotel's restaurant also served the best local dishes I've had in Ilorin."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center">
+                <h6 class="text-uppercase text-primary mb-3">Gallery</h6>
+                <h2 class="section-title">Explore Our Hotel</h2>
+                <p class="lead mx-auto" style="max-width: 700px;">Take a visual tour of our facilities and accommodations.</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1566669437684-6187d0154e1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="Hotel Room" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Hotel Lobby" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Restaurant" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Swimming Pool" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Spa" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80" alt="Gym" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Conference Room" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Bar" class="img-fluid w-100">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h6 class="text-uppercase text-primary mb-3">Contact Us</h6>
+                    <h2 class="mb-4">Get In Touch</h2>
+                    <p class="mb-5">Have questions about our accommodations or services? Reach out to us using the contact form or visit us at our location in Ilorin.</p>
+                    
+                    <div class="d-flex mb-4">
+                        <i class="fas fa-map-marker-alt text-primary me-4 mt-1" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Address</h5>
+                            <p class="mb-0">10 Ayodele Street, Behind Rhema Chapel Church, Tanke Tipper Garage, Ilorin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <i class="fas fa-phone-alt text-primary me-4 mt-1" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Phone</h5>
+                            <p class="mb-0">+234 812 345 6789</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <i class="fas fa-envelope text-primary me-4 mt-1" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Email</h5>
+                            <p class="mb-0">info@sheemahotels.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <i class="fas fa-clock text-primary me-4 mt-1" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Opening Hours</h5>
+                            <p class="mb-0">24/7 Reception</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 shadow">
+                        <h4 class="mb-4" style="color: var(--primary-color);">Send Us a Message</h4>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="ratio ratio-21x9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.287721752014!2d4.567812314771668!3d8.448180193991372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMjYnNTMuNCJOIDTCsDM0JzA5LjEiRQ!5e0!3m2!1sen!2sng!4v1620000000000!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="mb-0">Subscribe to Our Newsletter</h3>
+                    <p class="mb-0">Get updates on special offers and events.</p>
+                </div>
+                <div class="col-lg-6">
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-3" placeholder="Your Email Address">
+                        <button type="submit" class="btn btn-dark">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h3 class="text-white mb-4">S Heema Hotels & Suites</h3>
+                    <p class="text-muted">Luxury accommodation in the heart of Ilorin, offering world-class amenities and exceptional service.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">Home</a></li>
+                        <li class="mb-2"><a href="#rooms">Rooms</a></li>
+                        <li class="mb-2"><a href="#amenities">Amenities</a></li>
+                        <li class="mb-2"><a href="#gallery">Gallery</a></li>
+                        <li class="mb-2"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4">Services</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">Room Service</a></li>
+                        <li class="mb-2"><a href="#">Spa & Wellness</a></li>
+                        <li class="mb-2"><a href="#">Restaurant</a></li>
+                        <li class="mb-2"><a href="#">Meeting Rooms</a></li>
+                        <li class="mb-2"><a href="#">Event Spaces</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-4">Contact Info</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i> 10 Ayodele Street, Behind Rhema Chapel Church, Tanke Tipper Garage, Ilorin</li>
+                        <li class="mb-3"><i class="fas fa-phone-alt me-2 text-primary"></i> +234 812 345 6789</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2 text-primary"></i> info@sheemahotels.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-5 bg-secondary">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-muted mb-0">&copy; 2023 S Heema Hotels & Suites. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-muted mb-0">Designed with <i class="fas fa-heart text-danger"></i> by S Heema Team</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary btn-lg rounded-circle back-to-top" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handling
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you shortly to confirm your reservation.');
+            this.reset();
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Initialize date pickers for booking form
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkIn').min = today;
+        
+        document.getElementById('checkIn').addEventListener('change', function() {
+            const checkOut = document.getElementById('checkOut');
+            checkOut.min = this.value;
+            if (checkOut.value < this.value) {
+                checkOut.value = this.value;
+            }
+        });
+    </script>
+</body>
+</html>
